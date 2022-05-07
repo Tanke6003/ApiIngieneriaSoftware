@@ -1,0 +1,24 @@
+{
+  "name": "apiingieneriasoftware",
+  "version": "1.0.0",
+  "description": "proyecto ingieneria de software",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tanke6003/apiingieneriasoftware.git"
+  },
+  "author": "Tanke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tanke6003/apiingieneriasoftware/issues"
+  },
+  "homepage": "https://github.com/Tanke6003/apiingieneriasoftware#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "mysql": "^2.18.1"
+  }
+}
