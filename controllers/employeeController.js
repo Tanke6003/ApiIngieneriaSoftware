@@ -34,7 +34,6 @@ async function editEmployee(req, res){
 }
 async function getLastId(req,res){
     let lastId = await employeeModel.getLastId();
-    console.log(lastId)
     return res.send(lastId)
 }
 module.exports={
