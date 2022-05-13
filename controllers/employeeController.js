@@ -4,7 +4,6 @@ const functions = require('../functions');
 async function registerEmployee(req,res) {
     try {
         let exist = await employeeModel.verifyRfc(req.body.rfc);
-        exist.lastId = await employeeModel.getLastId();
         if(exist)
             return res.send({errorMessage: 'El rfc que quieres usar ya existe en la base de datos',status: false});
         await employeeModel.registerEmployee(req.body)
@@ -33,8 +32,14 @@ async function editEmployee(req, res){
         return res.status(500).send(functions.messagecatch(ex));    
     }
 }
+async function getLastId(req,res){
+    let lastId = await employeeModel.getLastId();
+    console.log(lastId)
+    return res.send(lastId)
+}
 module.exports={
     registerEmployee,
     getEmployees,
-    editEmployee
+    editEmployee,
+    getLastId
 }
