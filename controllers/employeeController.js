@@ -3,9 +3,8 @@ const constants = require('../constants');
 const functions = require('../functions');
 async function registerEmployee(req,res) {
     try {
-        if(functions.attributeNull(req.body))
-            return res.send({errorMessage: 'no se pudo registrar verifique campos',status: false});
         let exist = await employeeModel.verifyRfc(req.body.rfc);
+        exist.lastId = await employeeModel.getLastId();
         if(exist)
             return res.send({errorMessage: 'El rfc que quieres usar ya existe en la base de datos',status: false});
         await employeeModel.registerEmployee(req.body)

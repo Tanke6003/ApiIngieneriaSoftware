@@ -23,9 +23,16 @@ function editEmployee({name,rfc,position,phone,salary,status,idEmployee}){
     `
     return connection.runQuery(query,[name,rfc,position,phone,salary,status,idEmployee]);
 }
+function getLastId(){
+    let query=  `
+    select top(1) idEmployee from Employee Order by idEmployee des;
+    `;
+return connection.runQueryRow(query,[rfc]);
+}
 module.exports={
     verifyRfc,
     registerEmployee,
     getEmployees,
-    editEmployee
+    editEmployee,
+    getLastId
 }
