@@ -13,9 +13,9 @@ function registerEmployee({name,rfc,position,birthday,phone,salary}){
 }
 function getEmployees(id,name){
     let query =  `
-    select idEmployee,name,rfc,position,birthday,phone,salary,status from Employee where idEmployee = ? or name like ? 
+    select idEmployee,name,rfc,position,birthday,phone,salary,status from Employee where idEmployee = ? or name like ?  or rfc like ?
     `
-return connection.runQuery(query,[id,name]);
+return connection.runQuery(query,[id,name,name]);
 }
 function editEmployee({name,rfc,position,phone,salary,status,idEmployee}){
     let query =  `

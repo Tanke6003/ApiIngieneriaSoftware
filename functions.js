@@ -8,10 +8,11 @@ function likeString(like){
     return likeStringResult = "%" + like + "%";
 }
 function attributeNull(object){
-    console.log(object)
-    for(attribute in object)
-        if(attribute.value == '' || attribute.value == null)
+    for(let attribute of Object.values(object)){
+        if(attribute== "" || attribute == null)
             return true;
+    }
+    return false;
 }
 module.exports = {
     messagecatch,
