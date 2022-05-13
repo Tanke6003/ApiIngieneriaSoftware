@@ -5,8 +5,8 @@ async function registerEmployee(req,res) {
         let exist= await employeeModel.verifyRfc(req.body.rfc);
         if(exist)
             return res.send({errorMessage: 'El rfc que quieres usar ya existe en la base de datos',status: false});
-        await employeeModel.registerEmployee(req.body);
-        
+        await employeeModel.registerEmployee(req.body)
+        return res.send({status:true});
     } catch (ex) {
         return res.status(500).send(constants.messagecatch(ex));
     }
@@ -15,7 +15,7 @@ async function getEmployees(req, res) {
     try {
         let exist = await employeeModel.getEmployees(req.body.employee,constants.likeString(req.body.employee));
         if (exist && exist.length)
-            return res.send(exist);
+            return res.send({Employees:exist,status:true});
         return res.send({errorMessage: 'no se encontro registro',status: false});
     } catch (ex) {
         return res.status(500).send(constants.messagecatch(ex));
