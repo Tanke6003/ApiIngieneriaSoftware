@@ -1,5 +1,4 @@
 const employeeModel = require('../models/employeeModel');
-const constants = require('../constants');
 const functions = require('../functions');
 async function registerEmployee(req,res) {
     try {
@@ -26,8 +25,8 @@ async function editEmployee(req, res){
     try {
         let echo = await employeeModel.editEmployee(req.body);
         if(echo)
-            return res.send({status:true });
-        res.send({status:false})
+            return res.send({status:true});
+        return res.send({status:false})
     } catch (ex) {
         return res.status(500).send(functions.messagecatch(ex));    
     }
