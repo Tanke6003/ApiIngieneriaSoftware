@@ -28,7 +28,6 @@ function registerProduct({name,description,unitPrice}){
         Insert Into Product(name,description,unitPrice,stock)values(?,?,?,0);
     `;
     return connection.runQuery(query,[name,description,unitPrice]);
-    console.log(query)
 }
 function registerProductDetail({idProduct,idMaterial,amount}){
     let query=  `
