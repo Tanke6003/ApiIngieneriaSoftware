@@ -23,9 +23,16 @@ function verifyMaterial(name){
     `
     return connection.runQueryRow(query,[name]);
 }
+function editMaterial({idMaterial,name,stock,description,available}){
+    let query =  `
+        UPDATE Material SET name = ? ,stock = ? ,description = ?, available = ? where idMaterial = ?;
+    `
+    return connection.runQuery(query,[name,stock,description,available,idMaterial]);
+}
 module.exports={
     getLastId,
     getMaterials,
     registerMaterial,
-    verifyMaterial
+    verifyMaterial,
+    editMaterial
 }

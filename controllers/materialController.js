@@ -25,9 +25,19 @@ async function registerMaterial(req,res) {
         return res.status(500).send(functions.messagecatch(ex));
     }
 }
-
+async function editMaterial(req, res){  
+    try {
+        let echo = await materialModel.editMaterial(req.body);
+        if(echo)
+            return res.send({status:true});
+        return res.send({status:false})
+    } catch (ex) {
+        return res.status(500).send(functions.messagecatch(ex));    
+    }
+}
 module.exports={
     getLastId,
     getMaterials,
-    registerMaterial
+    registerMaterial,
+    editMaterial
 }

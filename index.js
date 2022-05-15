@@ -26,7 +26,7 @@ const httpServer = http.createServer(app);
 // const httpsServer = https.createServer(credentials, app);
 
 httpServer.listen(port, () => {
-  console.log('Escuchando el puerto: ' + port);
+  console.log('Escuchando en el puerto: ' + port);
 });
 // httpsServer.listen(portSSL, () => {
 //   console.log('Escuchando el puerto seguro: ' + portSSL);
