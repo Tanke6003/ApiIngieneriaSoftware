@@ -2,6 +2,7 @@ const employeeController = require('./controllers/employeeController');
 const materialController = require('./controllers/materialController');
 const productController = require('./controllers/productController');
 const loadRoutes = (app) =>{
+    //employees
     app.get('/employees/getLastId',employeeController.getLastId);
     app.post('/employees',employeeController.getEmployees);
     app.post('/employees/registerEmployee',employeeController.registerEmployee);
