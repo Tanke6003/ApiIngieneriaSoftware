@@ -16,7 +16,8 @@ const loadRoutes = (app) =>{
     app.get('/products/getLastId',productController.getLastId);
     app.post('/products',productController.getProducts);
     app.post('/products/registerProduct',productController.registerProduct);
-}
+    app.post('/products/createProduct',productController.createProduct);
+}   
 module.exports = {
     loadRoutes
 }

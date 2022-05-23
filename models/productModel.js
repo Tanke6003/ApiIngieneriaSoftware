@@ -19,7 +19,7 @@ function getProducts(id,name){
 }
 function getProductDetail(id){
     let query=  `
-    select ProductDetail.idProductDetail,ProductDetail.idProduct,ProductDetail.idMaterial,Material.name as 'name materia',ProductDetail.amount from ProductDetail INNER JOIN Material on Material.idMaterial = ProductDetail.idMaterial where idProduct = ?;
+    select ProductDetail.idProductDetail,ProductDetail.idProduct,ProductDetail.idMaterial,Material.name as 'nameMateria',ProductDetail.amount from ProductDetail INNER JOIN Material on Material.idMaterial = ProductDetail.idMaterial where idProduct = ?;
     `;
     return connection.runQuery(query,[id]);
 }
@@ -35,11 +35,25 @@ function registerProductDetail({idProduct,idMaterial,amount}){
     `;
     return connection.runQuery(query,[idProduct,idMaterial,amount]);
 }
+function updateStockProduct(stock,idProduct){
+    let query=  `
+        UPDATE product SET stock = ? Where idProduct = ?
+    `;
+    return connection.runQuery(query,[stock,idProduct]);
+}
+function getProductById(idProduct){
+    let query=  `
+    select * from product WHERE idProduct = ?;
+    `;
+    return connection.runQueryRow(query,[idProduct]);
+}
 module.exports={
     getLastId,
     verifyProduct,
     getProducts,
     getProductDetail,
     registerProduct,
-    registerProductDetail
+    registerProductDetail,
+    updateStockProduct,
+    getProductById
 }
