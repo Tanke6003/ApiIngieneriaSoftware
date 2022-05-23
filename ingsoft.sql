@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-05-2022 a las 02:25:56
--- Versión del servidor: 10.4.22-MariaDB
--- Versión de PHP: 8.1.2
+-- Tiempo de generación: 23-05-2022 a las 13:07:05
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,8 +44,7 @@ CREATE TABLE `employee` (
 
 INSERT INTO `employee` (`idEmployee`, `name`, `rfc`, `position`, `birthday`, `phone`, `salary`, `status`) VALUES
 (1, 'Ruben Farias', 'FAAR9903100B8', 'admin', '1999-03-10', '3339596003', 6000, 1),
-(2, 'Aton Ortega', 'FAAR9903100B2', 'vendedor', '1999-03-08', '3339592525', 3000, 1),
-(3, 'Brandon Gama', 'VGamma', 'mro', '1999-04-05', '3339592539', 3500, 1);
+(2, 'Aton Ortega', 'FAAR9903100B2', 'vendedor', '1999-03-08', '3339592525', 3000, 1);
 
 -- --------------------------------------------------------
 
@@ -80,7 +79,7 @@ CREATE TABLE `material` (
 
 INSERT INTO `material` (`idMaterial`, `name`, `description`, `stock`, `available`) VALUES
 (1, 'Azucar glass', 'ccc', 2000, 1),
-(2, 'hariona de trigo', 'aaaa', 25, 1);
+(2, 'hariona de trigo', 'aaaa', 21000, 1);
 
 -- --------------------------------------------------------
 
@@ -123,6 +122,13 @@ CREATE TABLE `product` (
   `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `product`
+--
+
+INSERT INTO `product` (`idProduct`, `name`, `description`, `unitPrice`, `stock`) VALUES
+(2, 'pan simpel', 'jmdsoimdsiomds', 20, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -135,6 +141,13 @@ CREATE TABLE `productdetail` (
   `idMaterial` int(11) NOT NULL,
   `amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `productdetail`
+--
+
+INSERT INTO `productdetail` (`idProductDetail`, `idProduct`, `idMaterial`, `amount`) VALUES
+(1, 2, 2, 2000);
 
 -- --------------------------------------------------------
 
@@ -315,13 +328,13 @@ ALTER TABLE `orderdetail`
 -- AUTO_INCREMENT de la tabla `product`
 --
 ALTER TABLE `product`
-  MODIFY `idProduct` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idProduct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `productdetail`
 --
 ALTER TABLE `productdetail`
-  MODIFY `idProductDetail` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idProductDetail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `refund`
